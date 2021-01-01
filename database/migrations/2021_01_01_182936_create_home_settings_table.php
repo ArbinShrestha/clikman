@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSettingsTable extends Migration
+class CreateHomeSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create('home_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('value')->nullable();
-            $table->string('slug');
-            $table->string('type')->nullable();
+            $table->string('Featured_Image')->nullable();
+            $table->string('Title')->nullable();
+            $table->string('URL')->nullable();
+            $table->string('Image')->nullable();
+            $table->string('Video')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('settings');
+        Schema::dropIfExists('home_settings');
     }
 }

@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeSettingController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +23,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function (){
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('homeSetting',HomeSettingController::class);
+    Route::resource('aboutUs',AboutUsController::class);
+    Route::resource('setting',SettingController::class);
+
+});
+
+
