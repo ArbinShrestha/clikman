@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AboutUs;
+use App\Models\Gear;
 use Illuminate\Http\Request;
 
-class AboutUsController extends Controller
+class GearController extends Controller
 {
 
     public function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +30,7 @@ class AboutUsController extends Controller
      */
     public function create()
     {
-        return view('admin.aboutUs.create');
+        return view('admin.gear.create');
     }
 
     /**
@@ -41,26 +42,18 @@ class AboutUsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-           'image'=>'required|image',
-            'title'=>'required|string',
+            'price'=>'required|integer',
+            'name'=>'required|string',
             'description'=>'required|string',
-
         ]);
 
+        $gear = new Gear();
 
-        $about = new AboutUs();
+        $gear->name = $request->name;
+        $gear->price = $request->price;
+        $gear->description = $request->description;
 
-        $image = $request->image;
-        $image_new = time().$image->getClientOriginalName();
-        $image->move('uploads/aboutUs', $image_new);
-        $about->image = $image;
-
-        $about->title = $request->title;
-        $about->description = $request->description;
-
-
-        $about->save();
-
+        $gear->save();
         return redirect()->back();
     }
 

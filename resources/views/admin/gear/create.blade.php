@@ -1,28 +1,26 @@
 @extends('layouts.dashboard')
 
-@section('aboutUs')
+@section('gear')
 
     <div class="card">
-        <div class="card-header"><h1>{{ __('About Us') }}</h1></div>
+        <div class="card-header"><h1>{{ __('Gear') }}</h1></div>
 
         <div class="card-body">
-            <form method="POST" action="{{route('aboutUs.store')}}" enctype="multipart/form-data">
+            <form method="POST" action="{{route('gear.store')}}" enctype="multipart/form-data">
                 @csrf
 
 
                             <div class="card-body">
-                                <label for="title">Title</label>
-                                <input type="text" name="title"  class="form-control file-border">
+                                <label for="name">Name</label>
+                                <input type="text" name="name"  class="form-control file-border">
                             </div>
                             <div class="card-body">
                                 <label for="description">Description</label>
                                 <input type="text" name="description"  class="form-control file-border">
                             </div>
                             <div class="card-body">
-                                <label for="image">Image</label>
-                                <input type="file" name="image" class="form-control file-border" accept="image/*" onchange="document.getElementById('imagee').src = window.URL.createObjectURL(this.files[0])">
-                                <img id="imagee" src="" alt="choose an image" width="100" height="100">
-
+                                <label for="price">Price</label>
+                                <input type="number" name="price"  class="form-control file-border">
                             </div>
 
                             <div class="card-body">

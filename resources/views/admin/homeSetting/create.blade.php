@@ -3,7 +3,7 @@
 @section('homeSetting')
 
     <div class="card">
-            <div class="card-header">{{ __('Home Setting') }}</div>
+            <div class="card-header"><h1>{{ __('Home Setting') }}</h1></div>
             <div class="card-body">
                 <form method="POST" action="{{route('homeSetting.store')}}" enctype="multipart/form-data">
                 @csrf
@@ -12,9 +12,11 @@
                     <label for="Featured_Image" class="col-md-4 text-md-right">{{ __('Featured Image') }}</label>
                     <div class="input-group col-md-6">
                         <div class="custom-file">
-                            <input type="file" class="form-control" id="Featured_Image" name="Featured_Image">
+                            <input class="form-control" name="Featured_Image" type="file" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
                         </div>
-                        <iframe src="{{url('')}}"></iframe>
+                        <div >
+                            <img id="output" src="" alt="choose an image" width="100" height="100">
+                        </div>
                     </div>
 
                 </div>
@@ -42,20 +44,27 @@
                     <label for="Image" class="col-md-4 text-md-right">{{ __('Image') }}</label>
                     <div class="form-group col-md-6">
                         <div class="custom-file">
-                            <input type="file" class="form-control" id="Image">
-
+                            <input class="form-control" name="Image" type="file" accept="image/*" onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])">
+                        </div>
+                        <div >
+                            <img id="image" src="" alt="choose an image" width="100" height="100">
+                        </div>
                         </div>
                     </div>
                 </div>
-                        {{--<div class="form-group row">--}}
-                            {{--<label for="Video" class="col-md-4 text-md-right">{{ __('Video') }}</label>--}}
-                            {{--<div class="input-group col-md-6">--}}
-                                {{--<div class="custom-file">--}}
-                                    {{--<input type="file" class="form-control" id="Video">--}}
+                        <div class="form-group row">
+                            <label for="Video" class="col-md-4 text-md-right">{{ __('Video') }}</label>
+                            <div class="input-group col-md-6">
+                                <div class="custom-file">
+                                    <input class="form-control" name="Video" type="file" accept="video/*" onchange="document.getElementById('video').src = window.URL.createObjectURL(this.files[0])">
+                        </div>
+                        <div >
+                            <img id="video" src="" alt="choose a video" width="100" height="100">
+                        </div>
 
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
+                                 </div>
+                            </div>
+                        </div>
 
 
                             <div class="form-group row mb-0">

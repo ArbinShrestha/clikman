@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\GearController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeSettingController;
 use App\Http\Controllers\SettingController;
@@ -29,6 +30,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function (){
     Route::resource('homeSetting',HomeSettingController::class);
     Route::resource('aboutUs',AboutUsController::class);
     Route::resource('setting',SettingController::class);
+    Route::resource('gear',GearController::class);
 
 });
 

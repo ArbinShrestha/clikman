@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HomeSetting;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Validator;
 
 class HomeSettingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +29,7 @@ class HomeSettingController extends Controller
      */
     public function create()
     {
-        return view('admin.homeSetting.create');
+        return view('admin.homeSetting.create')->with('featured',HomeSetting::all());
     }
 
     /**
@@ -35,26 +41,39 @@ class HomeSettingController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $request->validate([
             'Featured_Image'=>'required|image',
             'Title' => 'required|string|max:255',
             'URL'=>'required',
             'Image'=>'required|image',
-
+            'Video'=>'required|mimes:mp4,ogx,oga,ogv,ogg,webm'
         ]);
 
-        dd($request->all());
+        $homeSetting = new HomeSetting();
 
-        $home = new Home();
+        //for featured image
+        $featured =  $request->Featured_Image;
+        $featured_new_name = time().$featured->getClientOriginalName();
+        $featured->move('uploads/featured', $featured_new_name);
+        $homeSetting->Featured_Image = $featured;
 
-        $home->Title = $request->Title;
-        $home->URL = $request->URL;
-        $home->Image = $request->Image;
-        $home->Video = $request->Video;
-        $home->Is_Featured = $request->Is_Featured;
+        //for image
+        $image =  $request->Image;
+        $image_new = time().$image->getClientOriginalName();
+        $image->move('uploads/image', $image_new);
+        $homeSetting->Image = $image;
 
-        dd($home);
-        $home->save();
+        //for video
+        $video = $request->Video;
+        $video_new = time().$video->getClientOriginalName();
+        $video->move('uploads/video', $video_new);
+        $homeSetting->Video = $video;
+
+
+        $homeSetting->Title = $request->Title;
+        $homeSetting->URL = $request->URL;
+
+        $homeSetting->save();
 
         return redirect()->back();
     }

@@ -120,7 +120,7 @@
                     <img src="{{asset('/dashboard/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                    <a href="{{url('login')}}" class="d-block">{{ Auth::user()->name }}</a>
                 </div>
             </div>
 
@@ -141,14 +141,24 @@
                                 <a href="{{route('homeSetting.create')}}" class="nav-link ">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>
-                                        Home View
+                                        Home Screen
                                     </p>
                                 </a>
                             </li>
                         </ul>
                     </li>
+
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                    <a href="{{route('gear.create')}}" class="nav-link">
+                        <ion-icon name="cog-outline"></ion-icon>
+                        <p>
+                            Gear
+                        </p>
+                    </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('aboutUs.create')}}" class="nav-link">
                             <ion-icon name="add-circle-outline"></ion-icon>
                             <p>
                                 About Us
@@ -172,7 +182,7 @@
                                 <a href="{{route('setting.create')}}" class="nav-link ">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>
-                                        Create Settings
+                                        Web Settings
                                     </p>
                                 </a>
                             </li>
@@ -196,9 +206,13 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
 
+
         @yield('dashboard')
+        @yield('content')
+        @yield('aboutUs')
         @yield('homeSetting')
         @yield('setting')
+        @yield('gear')
 
     </div>
     <!-- /.content-wrapper -->
