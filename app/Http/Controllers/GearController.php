@@ -20,7 +20,7 @@ class GearController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.gear.index')->with('gear',Gear::all());
     }
 
     /**
@@ -54,7 +54,7 @@ class GearController extends Controller
         $gear->description = $request->description;
 
         $gear->save();
-        return redirect()->back();
+        return redirect()->route('gear.index');
     }
 
     /**
@@ -65,7 +65,9 @@ class GearController extends Controller
      */
     public function show($id)
     {
-        //
+        $gear = Gear::find($id);
+        $gear->delete();
+        return redirect()->route('gear.index');
     }
 
     /**
@@ -76,7 +78,8 @@ class GearController extends Controller
      */
     public function edit($id)
     {
-        //
+        $gear = Gear::find($id);
+        return view('admin.gear.edit',compact('gear'));
     }
 
     /**
@@ -88,7 +91,14 @@ class GearController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $gear = Gear::find($id);
+
+        $gear->name = $request->name;
+        $gear->price = $request->price;
+        $gear->description = $request->description;
+
+        $gear->save();
+        return redirect()->route('gear.index');
     }
 
     /**
@@ -99,6 +109,6 @@ class GearController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

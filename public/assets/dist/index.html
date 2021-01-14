@@ -1,0 +1,83 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Index</title>
+    <meta name="description" content="">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <link href="/images/fav.png" rel="shortcut icon">
+  
+    <link href="https://use.typekit.net/obo3fvi.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.custom.css"> 
+
+    
+    
+  </head>
+  <body class="">
+  <div class="c-loader fixed inset-0 flex justify-center items-center" id="loader">
+    
+    <div class="loader-logo text-center">
+      <div class="logo">
+        <img src="images/logo.png" alt="ClikMan"/>
+      </div>
+      <div class="counter mt-16 text-white"><span id="stat">1</span>%</div>
+    </div>
+    
+  </div>
+
+<main>
+  <div class="container">
+    <h1 class="font-muchosans font-bold text-2xl mb-16">Templates</h1>
+    <ul>
+      <li><a href="homepage.html" target="_blank">Home</a></li>
+      <li><a href="about.html" target="_blank">About</a></li>
+      <li><a href="services.html" target="_blank">Services</a></li>
+      <li><a href="category.html" target="_blank">Category</a></li>
+      <li><a href="subcategory.html" target="_blank">Sub Category</a></li>
+          <li><a href="category-detail.html" target="_blank">Category Detail</a></li>
+      <li><a href="places.html" target="_blank">Places</a></li>
+  
+      <li><a href="bookings.html" target="_blank">Bookings</a></li>
+      <li><a href="contact.html" target="_blank">Contact</a></li>
+      <li><a href="gearrentals.html" target="_blank">Gear Rentals</a></li>
+    </ul>
+  </div>
+</main>
+
+<script src="js/manifest.js"></script>
+<script src="js/vendor.js"></script>
+<script src="js/scripts.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"
+        async defer>
+    </script>
+    <script>
+       function recaptchaCallback() {
+            var response = grecaptcha.getResponse(),
+                $button = $(".book-btn");
+            $("#hidden-grecaptcha").val(response);
+          console.log(response);
+            if ($("#js-booking-form").valid()) {
+                $button.attr("disabled", false);
+            }
+            else {
+                $button.attr("disabled", "disabled");
+            }
+        }
+        function recaptchaExpired() {
+            var $button = $(".book-btn");
+            $("#hidden-grecaptcha").val("");
+            var $button = $(".button-register");
+            if ($("#js-booking-form").valid()) {
+                $button.attr("disabled", false);
+            }
+            else {
+                $button.attr("disabled", "disabled");
+            }
+        }
+    </script>
+
+</body></html>
+

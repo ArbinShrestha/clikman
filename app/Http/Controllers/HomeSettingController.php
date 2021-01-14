@@ -19,7 +19,7 @@ class HomeSettingController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.homeSetting.index')->with('homeSetting',HomeSetting::all());
     }
 
     /**
@@ -29,7 +29,7 @@ class HomeSettingController extends Controller
      */
     public function create()
     {
-        return view('admin.homeSetting.create')->with('featured',HomeSetting::all());
+        return view('admin.homeSetting.create');
     }
 
     /**
@@ -53,6 +53,68 @@ class HomeSettingController extends Controller
 
         //for featured image
         $featured =  $request->Featured_Image;
+        $featured_new_name = sha1(time()).'.'.$featured->getClientOriginalExtension();
+
+        $featured->move('uploads/featured', $featured_new_name);
+        $homeSetting->Featured_Image = $featured_new_name;
+
+        //for image
+        $image =  $request->Image;
+        $image_new = sha1(time()).'.'.$image->getClientOriginalExtension();
+        $image->move('uploads/image', $image_new);
+        $homeSetting->Image = $image_new;
+
+        //for video
+        $video = $request->Video;
+        $video_new = sha1(time()).'.'.$video->getClientOriginalExtension();
+        $video->move('uploads/video', $video_new);
+        $homeSetting->Video = $video_new;
+
+
+        $homeSetting->Title = $request->Title;
+        $homeSetting->URL = $request->URL;
+
+        $homeSetting->save();
+
+        return redirect()->route('homeSetting.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $homeSetting = HomeSetting::find($id);
+        $homeSetting->delete();
+        return redirect()->route('homeSetting.index');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        return view('admin.homeSetting.edit')->with('homeSetting',HomeSetting::find($id));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $homeSetting = HomeSetting::find($id);
+
+        $featured =  $request->Featured_Image;
         $featured_new_name = time().$featured->getClientOriginalName();
         $featured->move('uploads/featured', $featured_new_name);
         $homeSetting->Featured_Image = $featured;
@@ -75,41 +137,7 @@ class HomeSettingController extends Controller
 
         $homeSetting->save();
 
-        return redirect()->back();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        return redirect()->route('homeSetting.index');
     }
 
     /**

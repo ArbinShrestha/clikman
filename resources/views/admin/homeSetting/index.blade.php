@@ -1,24 +1,32 @@
 @extends('layouts.admin')
 
-@section('itemGroup')
+@section('homeSetting')
 
     <div class="card ">
-        <div class="card-header">{{ __('Item Groups') }}</div>
+        <div class="card-header"><h1>{{ __('Home Settings') }}</h1></div>
         <div class="card-body">
             <table class="table table-hover">
                 <thead>
-                    <th>Item Group</th>
+                    <th>Featured Image</th>
+                    <th>Title</th>
+                    <th>URL</th>
+                    <th>Image</th>
+                    <th>Video</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </thead>
                 <tbody>
-                @foreach($itemGroup as $itemGroups)
+                @foreach($homeSetting as $homeSettings)
                     <tr>
-                        <td>{{$itemGroups->ItemGroup_Name}}</td>
-                        <td><a href="{{route('itemGroup.edit',$itemGroups->ItemGroup_ID)}}" class="btn btn-xs btn-info">
+                        <td><img src="{{ asset('/public/uploads/featured/'.$homeSettings->Featured_Image) }}"></td>
+                        <td>{{$homeSettings->Title}}</td>
+                        <td>{{$homeSettings->URL}}</td>
+                        <td><img src="{{ asset('/public/uploads/image/'.$homeSettings->Image) }}"></td>
+                        <td><img src="{{ asset('/public/uploads/video/'.$homeSettings->Video) }}"></td>
+                        <td><a href="{{route('homeSetting.edit',$homeSettings->id)}}" class="btn btn-xs btn-info">
                                 Edit
                             </a> </td>
-                        <td><a href="{{route('itemGroup.destroy',$itemGroups->ItemGroup_ID)}}" class="btn btn-xs btn-danger">
+                        <td><a href="{{route('homeSetting.destroy',$homeSettings->id)}}" class="btn btn-xs btn-danger">
                                 Delete
                             </a> </td>
                     </tr>

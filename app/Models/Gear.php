@@ -9,5 +9,10 @@ class Gear extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','price','description'];
+    protected $fillable = ['title','description','price','image','remarks'];
+
+    public function GearCategory()
+    {
+        $this->hasMany(Gear::class);
+    }
 }

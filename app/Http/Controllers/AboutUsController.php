@@ -19,7 +19,7 @@ class AboutUsController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.aboutUs.index')->with('aboutUs',AboutUs::all());
     }
 
     /**
@@ -44,7 +44,6 @@ class AboutUsController extends Controller
            'image'=>'required|image',
             'title'=>'required|string',
             'description'=>'required|string',
-
         ]);
 
 
@@ -53,7 +52,7 @@ class AboutUsController extends Controller
         $image = $request->image;
         $image_new = time().$image->getClientOriginalName();
         $image->move('uploads/aboutUs', $image_new);
-        $about->image = $image;
+        $about->image = $image_new;
 
         $about->title = $request->title;
         $about->description = $request->description;
@@ -61,7 +60,7 @@ class AboutUsController extends Controller
 
         $about->save();
 
-        return redirect()->back();
+        return redirect()->route('aboutUs.index');
     }
 
     /**
@@ -72,7 +71,9 @@ class AboutUsController extends Controller
      */
     public function show($id)
     {
-        //
+        $about = AboutUs::find($id);
+        $about->delete();
+        return redirect()->route('aboutUs.index');
     }
 
     /**
@@ -83,7 +84,7 @@ class AboutUsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.aboutUs.edit')->with('aboutUs',AboutUs::find($id));
     }
 
     /**
@@ -95,7 +96,20 @@ class AboutUsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $about = AboutUs::find($id);
+
+        $image = $request->image;
+        $image_new = time().$image->getClientOriginalName();
+        $image->move('uploads/aboutUs', $image_new);
+        $about->image = $image_new;
+
+        $about->title = $request->title;
+        $about->description = $request->description;
+
+
+        $about->save();
+
+        return redirect()->route('aboutUs.index');
     }
 
     /**

@@ -30,46 +30,14 @@
 <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-        <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{route('home')}}" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
-            </li>
         </ul>
-
-        <!-- SEARCH FORM -->
-        <form class="form-inline ml-3">
-            <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-
         <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
 
-            <li class="nav-item">
-                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                    <i class="fas fa-expand-arrows-alt"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                    <i class="fas fa-th-large"></i>
-                </a>
-            </li>
-        </ul>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-auto">
             <!-- Authentication Links -->
             @guest
                 <li class="nav-item">
@@ -114,15 +82,6 @@
 
         <!-- Sidebar -->
         <div class="sidebar">
-            <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="{{asset('/dashboard/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
-                </div>
-                <div class="info">
-                    <a href="{{url('login')}}" class="d-block">{{ Auth::user()->name }}</a>
-                </div>
-            </div>
 
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -132,41 +91,151 @@
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link ">
                             <ion-icon name="home-outline"></ion-icon>
-                            <p>Home Setting
+                            <p>Home
                                 <i class="right fas fa-angle-left"></i></p>
 
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
+                                <a href="#" class="nav-link ">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Featured Image
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{route('homeSetting.create')}}" class="nav-link ">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>
-                                        Home Screen
+                                        Sections
                                     </p>
                                 </a>
                             </li>
                         </ul>
                     </li>
 
-                    <li class="nav-item">
-                    <a href="{{route('gear.create')}}" class="nav-link">
-                        <ion-icon name="cog-outline"></ion-icon>
-                        <p>
-                            Gear
-                        </p>
-                    </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="{{route('aboutUs.create')}}" class="nav-link">
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link ">
                             <ion-icon name="add-circle-outline"></ion-icon>
-                            <p>
-                                About Us
-                            </p>
+                            <p>About Us
+                                <i class="right fas fa-angle-left"></i></p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('aboutUs.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Edit
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link ">
+                            <ion-icon name="add-circle-outline"></ion-icon>
+                            <p>Teams
+                                <i class="right fas fa-angle-left"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('team.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        All Teams
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('team.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Add Teams
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link ">
+                            <ion-icon name="add-circle-outline"></ion-icon>
+                            <p>Films
+                                <i class="right fas fa-angle-left"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('films.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        All Films
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('films.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Add Films
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link ">
+                            <ion-icon name="cog-outline"></ion-icon>
+                            <p>Gear Rentals
+                                <i class="right fas fa-angle-left"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('gear.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        All Gears
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('gear.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Add Gears
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link ">
+                            <ion-icon name="add-circle-outline"></ion-icon>
+                            <p>Services
+                                <i class="right fas fa-angle-left"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('services.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        All Services
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('services.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Add/Edit Services
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
@@ -182,7 +251,7 @@
                                 <a href="{{route('setting.create')}}" class="nav-link ">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>
-                                        Web Settings
+                                        Web Setting
                                     </p>
                                 </a>
                             </li>
@@ -190,7 +259,7 @@
                                 <a href="{{route('setting.index')}}" class="nav-link ">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>
-                                        View Settings
+                                        View/Edit
                                     </p>
                                 </a>
                             </li>
@@ -206,10 +275,12 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
 
-
         @yield('dashboard')
         @yield('content')
+        @yield('team')
         @yield('aboutUs')
+        @yield('films')
+        @yield('services')
         @yield('homeSetting')
         @yield('setting')
         @yield('gear')

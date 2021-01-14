@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.admin')
 
 @section('homeSetting')
 
@@ -12,11 +12,13 @@
                     <label for="Featured_Image" class="col-md-4 text-md-right">{{ __('Featured Image') }}</label>
                     <div class="input-group col-md-6">
                         <div class="custom-file">
-                            <input class="form-control" name="Featured_Image" type="file" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
+                            <input class="form-control file-border" name="Featured_Image" type="file" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
+
                         </div>
-                        <div >
-                            <img id="output" src="" alt="choose an image" width="100" height="100">
+                        <div>
+                            <img id="output" src="" alt="choose an image" width="200" height="200">
                         </div>
+
                     </div>
 
                 </div>
@@ -47,7 +49,7 @@
                             <input class="form-control" name="Image" type="file" accept="image/*" onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])">
                         </div>
                         <div >
-                            <img id="image" src="" alt="choose an image" width="100" height="100">
+                            <img id="image" src="" alt="choose an image" width="200" height="200">
                         </div>
                         </div>
                     </div>
@@ -59,7 +61,7 @@
                                     <input class="form-control" name="Video" type="file" accept="video/*" onchange="document.getElementById('video').src = window.URL.createObjectURL(this.files[0])">
                         </div>
                         <div >
-                            <img id="video" src="" alt="choose a video" width="100" height="100">
+                            <img id="video" src="" alt="choose a video" width="200" height="200">
                         </div>
 
                                  </div>
@@ -74,11 +76,10 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    </form>
 
-                    </div>
+                </form>
             </div>
+    </div>
+
 
 @endsection

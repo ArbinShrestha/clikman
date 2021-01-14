@@ -15,9 +15,12 @@ class CreateGearsTable extends Migration
     {
         Schema::create('gears', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('price')->nullable();
-            $table->string('description')->nullable();
+            $table->string('title');
+            $table->string('description');
+            $table->string('price');
+            $table->string('image');
+            $table->unsignedInteger('gear_categories');
+            $table->string('remarks')->nullable();
             $table->timestamps();
         });
     }
