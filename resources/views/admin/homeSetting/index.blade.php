@@ -7,7 +7,7 @@
         <div class="card-body">
             <table class="table table-hover">
                 <thead>
-                    <th>Featured Image</th>
+
                     <th>Title</th>
                     <th>URL</th>
                     <th>Image</th>
@@ -18,7 +18,6 @@
                 <tbody>
                 @foreach($homeSetting as $homeSettings)
                     <tr>
-                        <td><img src="{{ asset('/public/uploads/featured/'.$homeSettings->Featured_Image) }}"></td>
                         <td>{{$homeSettings->Title}}</td>
                         <td>{{$homeSettings->URL}}</td>
                         <td><img src="{{ asset('/public/uploads/image/'.$homeSettings->Image) }}"></td>

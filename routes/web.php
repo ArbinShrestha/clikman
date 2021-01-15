@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\FeaturedImageController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\FixerController;
 use App\Http\Controllers\FrameController;
@@ -32,6 +33,7 @@ Auth::routes();
 Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function (){
 
     Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
+    Route::resource('featuredImg',FeaturedImageController::class);
     Route::resource('homeSetting',HomeSettingController::class);
     Route::resource('aboutUs',AboutUsController::class);
     Route::resource('team',TeamController::class);

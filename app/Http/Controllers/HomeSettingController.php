@@ -42,7 +42,6 @@ class HomeSettingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'Featured_Image'=>'required|image',
             'Title' => 'required|string|max:255',
             'URL'=>'required',
             'Image'=>'required|image',
@@ -50,13 +49,6 @@ class HomeSettingController extends Controller
         ]);
 
         $homeSetting = new HomeSetting();
-
-        //for featured image
-        $featured =  $request->Featured_Image;
-        $featured_new_name = sha1(time()).'.'.$featured->getClientOriginalExtension();
-
-        $featured->move('uploads/featured', $featured_new_name);
-        $homeSetting->Featured_Image = $featured_new_name;
 
         //for image
         $image =  $request->Image;
@@ -114,22 +106,17 @@ class HomeSettingController extends Controller
     {
         $homeSetting = HomeSetting::find($id);
 
-        $featured =  $request->Featured_Image;
-        $featured_new_name = time().$featured->getClientOriginalName();
-        $featured->move('uploads/featured', $featured_new_name);
-        $homeSetting->Featured_Image = $featured;
-
         //for image
         $image =  $request->Image;
         $image_new = time().$image->getClientOriginalName();
         $image->move('uploads/image', $image_new);
-        $homeSetting->Image = $image;
+        $homeSetting->Image = $image_new;
 
         //for video
         $video = $request->Video;
         $video_new = time().$video->getClientOriginalName();
         $video->move('uploads/video', $video_new);
-        $homeSetting->Video = $video;
+        $homeSetting->Video = $video_new;
 
 
         $homeSetting->Title = $request->Title;

@@ -97,7 +97,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link ">
+                                <a href="{{route('featuredImg.index')}}" class="nav-link ">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>
                                         Featured Image
@@ -105,13 +105,30 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('homeSetting.create')}}" class="nav-link ">
+                                <a href="{{route('featuredImg.create')}}" class="nav-link ">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>
-                                        Sections
+                                        Create Featured Image
                                     </p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{route('homeSetting.index')}}" class="nav-link ">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        All Sections
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('homeSetting.create')}}" class="nav-link ">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Add Sections
+                                    </p>
+                                </a>
+                            </li>
+
                         </ul>
                     </li>
 
@@ -135,7 +152,7 @@
 
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link ">
-                            <ion-icon name="add-circle-outline"></ion-icon>
+                            <ion-icon name="people-circle-outline"></ion-icon>
                             <p>Teams
                                 <i class="right fas fa-angle-left"></i></p>
                         </a>
@@ -161,7 +178,7 @@
 
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link ">
-                            <ion-icon name="add-circle-outline"></ion-icon>
+                            <ion-icon name="film-outline"></ion-icon>
                             <p>Films
                                 <i class="right fas fa-angle-left"></i></p>
                         </a>
@@ -179,6 +196,32 @@
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>
                                         Add Films
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link ">
+                            <ion-icon name="images-outline"></ion-icon>
+                            <p>Frames
+                                <i class="right fas fa-angle-left"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('frames.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        All Frames
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('frames.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Add Frames
                                     </p>
                                 </a>
                             </li>
@@ -213,6 +256,32 @@
 
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link ">
+                            <ion-icon name="bandage-outline"></ion-icon>
+                            <p>Fixers
+                                <i class="right fas fa-angle-left"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('fixers.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        All Fixers
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('fixers.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Add Fixers
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link ">
                             <ion-icon name="add-circle-outline"></ion-icon>
                             <p>Services
                                 <i class="right fas fa-angle-left"></i></p>
@@ -230,7 +299,7 @@
                                 <a href="{{route('services.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>
-                                        Add/Edit Services
+                                        Add Services
                                     </p>
                                 </a>
                             </li>
@@ -277,9 +346,12 @@
 
         @yield('dashboard')
         @yield('content')
+        @yield('featuredImg')
+        @yield('fixers')
         @yield('team')
         @yield('aboutUs')
         @yield('films')
+        @yield('frames')
         @yield('services')
         @yield('homeSetting')
         @yield('setting')

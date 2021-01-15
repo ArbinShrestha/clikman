@@ -17,19 +17,16 @@
                     <input type="text" name="description"  class="form-control file-border">
                 </div>
                 <div class="card-body">
-                    <label for="filmCategory"><b>Select a Category</b></label>
-                    <select name="filmCategory" id="filmCategory" class="form-control file-border">
+                    <label for="film_categories"><b>Select a Category</b></label>
+                    <select name="film_categories" id="film_categories" class="form-control file-border">
                         @foreach($filmCategory as $filmCategorys)
                             <option value="{{$filmCategorys->id}}">{{$filmCategorys->name}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="card-body">
-                    <label for="video[]">Video</label>
-                    <input type="file" name="video[]" value="video" class="form-control file-border"><br>
-{{--                    <input type="file" name="video[]" value="2" class="form-control file-border"><br>--}}
-{{--                    <input type="file" name="video[]" value="3" class="form-control file-border"><br>--}}
-
+                    <label for="video">Video</label>
+                    <input type="file" name="video" value="" class="form-control file-border"><br>
                 </div>
 
                 <div class="card-body">

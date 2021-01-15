@@ -9,7 +9,7 @@ class HomeSetting extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['Featured_Image','Title','URL','Image','Video'];
+    protected $fillable = ['Title','URL','Image','Video'];
 
 
 }

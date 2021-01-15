@@ -19,7 +19,7 @@
                     <tr>
                         <td>{{$films->title}}</td>
                         <td>{{$films->description}}</td>
-                        <td><img src="{{ asset('uploads/services/'.$films->video) }}" width="100"></td>
+                        <td><img src="{{ asset('uploads/film/'.$films->video) }}" width="100"></td>
                         <td><a href="{{route('films.edit',$films->id)}}" class="btn btn-xs btn-info">
                                 Edit
                             </a> </td>

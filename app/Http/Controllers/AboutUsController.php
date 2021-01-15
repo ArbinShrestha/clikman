@@ -57,7 +57,6 @@ class AboutUsController extends Controller
         $about->title = $request->title;
         $about->description = $request->description;
 
-
         $about->save();
 
         return redirect()->route('aboutUs.index');

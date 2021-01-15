@@ -15,6 +15,10 @@ class CreateFixersTable extends Migration
     {
         Schema::create('fixers', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('description');
+            $table->string('uploads')->nullable();
+            $table->string('remarks')->nullable();
             $table->timestamps();
         });
     }

@@ -1,22 +1,26 @@
 @extends('layouts.admin')
 
-@section('films')
+@section('frames')
 
     <div class="card">
-        <div class="card-header"><h1>{{ __('Update Services Page') }}</h1></div>
+        <div class="card-header"><h1>{{ __('Update Frames Page') }}</h1></div>
 
         <div class="card-body">
-            <form method="post" action="{{route('films.update', $service->id)}}" enctype="multipart/form-data">
+            <form method="post" action="{{route('frames.update', $frame->id)}}" enctype="multipart/form-data">
                 {{ method_field('PUT') }}
                 @csrf
 
                 <div class="card-body">
                     <label for="title">Title</label>
-                    <input type="text" name="title" value="{{$film->title}}"  class="form-control file-border">
+                    <input type="text" name="title" value="{{$frame->title}}"  class="form-control file-border">
                 </div>
                 <div class="card-body">
                     <label for="description">Description</label>
-                    <input type="text" name="description" value="{{$film->description}}" class="form-control file-border">
+                    <input type="text" name="description" value="{{$frame->description}}" class="form-control file-border">
+                </div>
+                <div class="card-body">
+                    <label for="image">Image</label>
+                    <input type="file" name="image" value="{{$frame->image}}" class="form-control file-border">
                 </div>
 
                 <div class="card-body">

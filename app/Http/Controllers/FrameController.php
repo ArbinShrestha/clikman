@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Frame;
+use App\Models\FrameCategory;
 use Illuminate\Http\Request;
 
 class FrameController extends Controller
@@ -14,7 +15,7 @@ class FrameController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.frames.index')->with('frame',Frame::all());
     }
 
     /**
@@ -24,7 +25,8 @@ class FrameController extends Controller
      */
     public function create()
     {
-        //
+        $frameCategory = FrameCategory::all();
+        return view('admin.frames.create',compact('frameCategory'));
     }
 
     /**
@@ -35,7 +37,28 @@ class FrameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'image'=>'required|image',
+            'title'=>'required|string',
+            'description'=>'required|string',
+        ]);
+
+
+        $frame = new Frame();
+
+        $image = $request->image;
+        $image_new = time().$image->getClientOriginalName();
+        $image->move('uploads/frames', $image_new);
+        $frame->image = $image_new;
+
+        $frame->frame_categories = $request->frame_categories;
+        $frame->title = $request->title;
+        $frame->description = $request->description;
+
+
+        $frame->save();
+
+        return redirect()->route('frames.index');
     }
 
     /**
@@ -44,9 +67,11 @@ class FrameController extends Controller
      * @param  \App\Models\Frame  $frame
      * @return \Illuminate\Http\Response
      */
-    public function show(Frame $frame)
+    public function show($id)
     {
-        //
+        $frame = Frame::find($id);
+        $frame->delete();
+        return redirect()->route('frames.index');
     }
 
     /**
@@ -55,9 +80,9 @@ class FrameController extends Controller
      * @param  \App\Models\Frame  $frame
      * @return \Illuminate\Http\Response
      */
-    public function edit(Frame $frame)
+    public function edit($id)
     {
-        //
+        return view('admin.frames.edit')->with('frame',Frame::find($id));
     }
 
     /**
@@ -67,9 +92,22 @@ class FrameController extends Controller
      * @param  \App\Models\Frame  $frame
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Frame $frame)
+    public function update(Request $request, $id)
     {
-        //
+        $frame = Frame::find($id);
+
+        $image = $request->image;
+        $image_new = time().$image->getClientOriginalName();
+        $image->move('uploads/frames', $image_new);
+        $frame->image = $image_new;
+
+        $frame->title = $request->title;
+        $frame->description = $request->description;
+
+
+        $frame->save();
+
+        return redirect()->route('frames.index');
     }
 
     /**

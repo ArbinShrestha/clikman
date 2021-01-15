@@ -9,6 +9,7 @@ class FilmCategory extends Model
 {
     use HasFactory;
 
+
     protected $fillable = ['name','remarks'];
 
     public function film()

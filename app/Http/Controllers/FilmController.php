@@ -40,7 +40,7 @@ class FilmController extends Controller
         $request->validate([
             'title'=>'required|string',
             'description'=>'required|string',
-            'video[]'=>'required|mimes:mp4,ogx,oga,ogv,ogg,webm',
+            'video'=>'required|mimes:mp4,ogx,oga,ogv,ogg,webm',
         ]);
 
         $film = new Film();
@@ -50,9 +50,10 @@ class FilmController extends Controller
         $Video->move('uploads/video/film', $video_new);
         $film->video = $video_new;
 
+        $film->film_categories = $request->film_categories;
         $film->title = $request->title;
         $film->description = $request->description;
-        dd($film);
+
 
         $film->save();
 

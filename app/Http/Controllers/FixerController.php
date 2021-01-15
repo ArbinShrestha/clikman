@@ -14,7 +14,7 @@ class FixerController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.fixers.index')->with('fixer',Fixer::all());
     }
 
     /**
@@ -24,7 +24,7 @@ class FixerController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.fixers.create');
     }
 
     /**
@@ -35,7 +35,26 @@ class FixerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'=>'required|string',
+            'description'=>'required|string',
+            'uploads'=> 'required|mimes:pdf,xlx,csv|max:2048',
+        ]);
+
+
+        $about = new Fixer();
+
+        $fileName = $request->uploads;
+        $fileName_new = time().'.'.$fileName->extension();
+        $fileName->move('uploads/file', $fileName_new);
+        $about->uploads = $fileName_new;
+
+        $about->title = $request->title;
+        $about->description = $request->description;
+
+        $about->save();
+
+        return redirect()->route('fixers.index');
     }
 
     /**
@@ -44,9 +63,11 @@ class FixerController extends Controller
      * @param  \App\Models\Fixer  $fixer
      * @return \Illuminate\Http\Response
      */
-    public function show(Fixer $fixer)
+    public function show($id)
     {
-        //
+        $about = Fixer::find($id);
+        $about->delete();
+        return redirect()->route('fixers.index');
     }
 
     /**
@@ -55,9 +76,9 @@ class FixerController extends Controller
      * @param  \App\Models\Fixer  $fixer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fixer $fixer)
+    public function edit($id)
     {
-        //
+        return view('admin.fixers.edit')->with('fixer',Fixer::find($id));
     }
 
     /**
@@ -67,9 +88,21 @@ class FixerController extends Controller
      * @param  \App\Models\Fixer  $fixer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fixer $fixer)
+    public function update(Request $request, $id)
     {
-        //
+        $about = Fixer::fimd($id);
+
+        $fileName = $request->uploads;
+        $fileName_new = time().'.'.$fileName->extension();
+        $fileName->move('uploads/file', $fileName_new);
+        $about->uploads = $fileName_new;
+
+        $about->title = $request->title;
+        $about->description = $request->description;
+
+        $about->save();
+
+        return redirect()->route('fixers.index');
     }
 
     /**

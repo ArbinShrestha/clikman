@@ -15,7 +15,6 @@ class CreateHomeSettingsTable extends Migration
     {
         Schema::create('home_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('Featured_Image')->nullable();
             $table->string('Title')->nullable();
             $table->string('URL')->nullable();
             $table->string('Image')->nullable();
